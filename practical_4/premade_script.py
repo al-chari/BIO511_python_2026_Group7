@@ -15,7 +15,7 @@ def codons(sequence_file):
                 sequences[header] = ""
             # If the line does not start with '>', it is part of the current sequence and we add it to that sequence
             else:
-                sequences[header] += row
+                sequences[header] += row.upper()
     
     # Now we split each sequence into codons
     sequence_codons = {}
@@ -36,6 +36,14 @@ def codons(sequence_file):
 def exercise_function(codon_list):
     """A function that translates the codons to aminoacids"""
     from Bio.Seq import Seq
+    translated_strings = {}
+    for header, codons in codon_list.items():
+        aa_string = ""
+        for codon in codons:
+            amino_acid = Seq(codon).translate()
+            aa_string += str(amino_acid)
+        translated_strings[header] = aa_string
+    return translated_strings
     translated_strings = {}
     for header, codons in codon_list.items():
         aa_string = ""
