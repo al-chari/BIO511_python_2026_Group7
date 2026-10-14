@@ -26,7 +26,7 @@ print(my_calc.multiply())
 
 class Circle():
     def __init__(self, radius):
-        self.radius = int(radius)
+        self.radius = float(radius)
         self.circumference = self.calc_perimeter()
         self.area = self.calc_area()
 
